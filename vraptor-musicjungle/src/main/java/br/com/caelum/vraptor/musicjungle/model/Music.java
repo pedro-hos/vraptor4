@@ -23,7 +23,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -51,8 +51,8 @@ public class Music {
     @Size(min = 6)
 	private String description;
 
-	@OneToMany(mappedBy = "music")
-	private Set<MusicOwner> musicOwners;
+	@ManyToMany
+	private Set<User> owners;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -89,13 +89,13 @@ public class Music {
 	public void setType(MusicType type) {
 		this.type = type;
 	}
-
-	public Set<MusicOwner> getMusicOwners() {
-		return musicOwners;
+	
+	public Set<User> getOwners() {
+		return owners;
 	}
-
-	public void setMusicOwners(Set<MusicOwner> copies) {
-		this.musicOwners = copies;
+	
+	public void setOwners(Set<User> owners) {
+		this.owners = owners;
 	}
 
 	@Override
@@ -133,5 +133,4 @@ public class Music {
 		return "Music [id=" + id + ", title=" + title + 
 			", description=" + description + ", type=" + type + "]";
 	}
-	
 }

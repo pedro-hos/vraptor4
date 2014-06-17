@@ -1,4 +1,4 @@
-﻿<%@ include file="/header.jsp" %> 
+<%@ include file="/header.jsp" %> 
 
 <h1><fmt:message key="search_results"/></h1>
 
@@ -20,8 +20,8 @@
 				<td>${music.description}</td>
 				<td><fmt:message key="${music.type}"/></td>
 				<td>
-					<c:forEach var="musicOwner" items="${music.musicOwners}">
-						${musicOwner.owner.name}<br/>
+					<c:forEach var="owner" items="${music.owners}">
+						${owner.name}<br/>
 					</c:forEach>
 				</td>
 				<td width="1px">

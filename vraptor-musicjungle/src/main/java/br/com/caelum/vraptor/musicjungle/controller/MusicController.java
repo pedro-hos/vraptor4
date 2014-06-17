@@ -41,7 +41,6 @@ import br.com.caelum.vraptor.musicjungle.files.Musics;
 import br.com.caelum.vraptor.musicjungle.interceptor.Public;
 import br.com.caelum.vraptor.musicjungle.interceptor.UserInfo;
 import br.com.caelum.vraptor.musicjungle.model.Music;
-import br.com.caelum.vraptor.musicjungle.model.MusicOwner;
 import br.com.caelum.vraptor.observer.download.Download;
 import br.com.caelum.vraptor.observer.download.FileDownload;
 import br.com.caelum.vraptor.observer.upload.UploadedFile;
@@ -112,7 +111,7 @@ public class MusicController {
 		validator.onErrorForwardTo(UsersController.class).home();
 
 		musicDao.add(music);
-		musicDao.add(new MusicOwner(userInfo.getUser(), music));
+		musicDao.add(music, userInfo.getUser());
 		
 		// is there a file?
 		if (file != null) {

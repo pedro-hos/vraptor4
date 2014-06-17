@@ -26,7 +26,6 @@ import br.com.caelum.vraptor.musicjungle.dao.MusicDao;
 import br.com.caelum.vraptor.musicjungle.dao.UserDao;
 import br.com.caelum.vraptor.musicjungle.interceptor.UserInfo;
 import br.com.caelum.vraptor.musicjungle.model.Music;
-import br.com.caelum.vraptor.musicjungle.model.MusicOwner;
 import br.com.caelum.vraptor.musicjungle.model.User;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
@@ -95,7 +94,7 @@ public class MusicOwnerController {
 
 		validator.onErrorUsePageOf(UsersController.class).home();
 
-		musicDao.add(new MusicOwner(user, music));
+		musicDao.add(music, user);
 
 		result.redirectTo(UsersController.class).home();
 	}

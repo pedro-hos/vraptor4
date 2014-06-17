@@ -22,7 +22,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import br.com.caelum.vraptor.musicjungle.model.Music;
-import br.com.caelum.vraptor.musicjungle.model.MusicOwner;
+import br.com.caelum.vraptor.musicjungle.model.User;
 
 /**
  * Default implementation for MusicDao. <br> Annotating 
@@ -56,11 +56,13 @@ public class DefaultMusicDao implements MusicDao {
 	public void add(Music music) {
 		entityManager.persist(music);
 	}
-
+	
 	@Override
-	public void add(MusicOwner copy) {
-		entityManager.persist(copy);
+	public void add(Music music, User owner) {
+		music.getOwners().add(owner);
+		entityManager.persist(music);
 	}
+
 
 	@Override
 	public List<Music> searchSimilarTitle(String title) {

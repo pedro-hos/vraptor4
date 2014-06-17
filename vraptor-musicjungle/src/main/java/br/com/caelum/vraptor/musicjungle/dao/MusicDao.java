@@ -19,7 +19,7 @@ package br.com.caelum.vraptor.musicjungle.dao;
 import java.util.List;
 
 import br.com.caelum.vraptor.musicjungle.model.Music;
-import br.com.caelum.vraptor.musicjungle.model.MusicOwner;
+import br.com.caelum.vraptor.musicjungle.model.User;
 
 /**
  * Data Access Object for the Music entity.
@@ -35,9 +35,9 @@ public interface MusicDao {
 	void add(Music music);
 
 	/**
-	 * Adds a copy of the music
+	 * Adds a copy of the music to an user.
 	 */
-	void add(MusicOwner copy);
+	void add(Music music, User owner);
 	
 	/**
 	 * Load the music from database
